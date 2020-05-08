@@ -112,7 +112,7 @@ public class Server {
         //System.out.println("Received message: " + data + " which has " + messageElements.length + " elements");
         int i = 0;
         
-        /*
+        /////////////////////////*
          String message = "";
          message += edges.size() + ",";
          message += neighbors.get(myID).port + ",";
@@ -126,7 +126,7 @@ public class Server {
          
          }
          
-         */
+         /////////////////*/
         
         int numUpdates = Integer.parseInt(messageElements[0]);
         String serverPort = messageElements[1];
@@ -174,7 +174,9 @@ public class Server {
             
             routingTables.get(serverId).put(neighborId, neighborCost);
         }
-        /*
+        
+        
+        ////////////////
         System.out.println("\n\nUpdated table:");
         
         for(Integer id : routingTables.keySet()) {
@@ -190,7 +192,7 @@ public class Server {
             }
             System.out.println("");
         }
-        */
+        ////////////////////////////
         
         
         if(serverId != myID && isCrashed == false){
@@ -373,15 +375,15 @@ public class Server {
                                     costs[nodeNeighborId - 1] = totalCostFromMeToThisNode;
                                     nextHops[nodeNeighborId - 1] = nodeId;
                                 } else {
-                                    //System.out.println("totalCostFromMeToThisNode not smaller than costs[" + (nodeNeighborId - 1)+"]");
+                                    System.out.println("totalCostFromMeToThisNode not smaller than costs[" + (nodeNeighborId - 1)+"]");
                                 }
                                 
                             }
                         } else {
-                            //System.out.println("costs[nodeId - 1] > Integer.MAX_VALUE]" + (nodeNeighborId - 1));
+                            System.out.println("costs[nodeId - 1] > Integer.MAX_VALUE]" + (nodeNeighborId - 1));
                         }
                     } else {
-                        //System.out.println("nodeNeighborId == myID: " + (nodeNeighborId - 1));
+                        System.out.println("nodeNeighborId == myID: " + (nodeNeighborId - 1));
                     }
                 }
             } else {
