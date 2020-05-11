@@ -230,7 +230,7 @@ public class Server {
                             datagramSocket.receive(packet);
                             numOfPacks++;
                             String modifiedSentence = new String(packet.getData(), 0, packet.getLength());
-                            //System.out.println("\n\nFROM SERVER: " + modifiedSentence);
+                            System.out.println("\n\nFROM SERVER: " + modifiedSentence);
                             
                             processRecvdPacketData(modifiedSentence);
                             
@@ -255,7 +255,7 @@ public class Server {
     }
     
     public static void populateData(String filename) {
-    	//File file = new File(filename);
+    	File file = new File(filename);
         Scanner scanner = new Scanner(filename);
         try {
             scanner = new Scanner(new BufferedReader(new FileReader(filename)));
@@ -276,9 +276,9 @@ public class Server {
             Node newNeighbor = new Node();
             newNeighbor.ip = serverIP;
             newNeighbor.port = serverPort;
-            //newNeighbor.neighbors = new HashMap<>();
+            newNeighbor.neighbors = new HashMap<>();
             routingTables.put(serverID, new HashMap<>());
-            //routingTables.get(newNeighbor).put();
+            routingTables.get(newNeighbor).put();
             neighbors.put(serverID, newNeighbor);
             neighborIpToId.put(serverIP, serverID);
             
@@ -387,7 +387,7 @@ public class Server {
                     }
                 }
             } else {
-                //System.out.println("(nodeId == myID) is: " + (nodeId - 1));
+                System.out.println("(nodeId == myID) is: " + (nodeId - 1));
             }
         }
         System.out.println("\nServer " + myID + "'s Routing Table");
@@ -496,7 +496,7 @@ public class Server {
     }
     
     public static void send(int id, byte [] messageBytes) throws IOException {
-        // System.out.println("about to send message: " + new String(messageBytes) + " to client " + id);
+        System.out.println("about to send message: " + new String(messageBytes) + " to client " + id);
         Node client = neighbors.get(id);
         DatagramSocket datagramSocket = new DatagramSocket();
         InetAddress recipient = InetAddress.getByName(client.ip);
